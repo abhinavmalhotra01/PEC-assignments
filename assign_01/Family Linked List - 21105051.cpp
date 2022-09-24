@@ -189,7 +189,7 @@ Try to find a way to link the family members' doubly-linked list based on their 
 
 --
 
-*In my opinion, in order to link the nodes with respect to the relation , we can take the relaion as the input and while inserting a new node we
+*In my opinion, in order to link the nodes with respect to the relation , we can take the relation as the input and while inserting a new node we
  may link the nodes wrt to the relation , in this view, a family graph might be created
 	*another way can be to take the input in form of the levels of a family tree , ie, taking the input generation wise and inserting the nodes
 	 in the list level wise as in an generic tree

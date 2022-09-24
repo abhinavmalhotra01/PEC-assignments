@@ -19,12 +19,15 @@ public:
 
 	// creating a constructor for the objects 
 	family_node(string name,int age){
+		
+		// to store the name and age , given by the user in the current object
 		this->name=name;
 		this->age=age;
-		// to store the name and age , given by the user in the current object
+		
+		// initializing the prev and next poibnters to NULL - will be updating them in insertion function
 		prev=NULL;
 		next=NULL;
-		// initializing the prev and next poibnters to NULL - will be updating them in insertion function
+		
 	}
 
 };
@@ -32,16 +35,15 @@ public:
 
 // to insert new node at the tail of the linked list
 
-void insert_member(family_node*&head,string name,int age){ // declaring it void so that we dont have to return anything and can simply append the new node and update the tail
-	family_node*temp=head;
+void insert_member(family_node*&head,string name,int age){ // declaring it void so that we dont have to return anything and can simply append the new node
+	family_node*temp=head; // inorder to traverse the list
 	family_node*new_node = new family_node(name,age); // dynamically creating a new node and initiallizing it with the input values
 
 	// to insert in an emty list
-	// if the list is empty- head would be poiting to null
+	// if the list is empty- head would be poiting to NULL
 	if(temp==NULL){
 		head=new_node; // now the head will point to the new_node
 	}
-
 
 	// other case-- inserting in an non-empty list
 	else{
@@ -50,14 +52,14 @@ void insert_member(family_node*&head,string name,int age){ // declaring it void 
 		}
 		// now temp will be pointing to the tail of the linked list
 
-		temp->next = new_node; // in order to link the 2 nodes(tail,new_node)
-		new_node->prev=temp; // in order to link temp and new_node through prev pointer to maintain the doubly nature of the list
+		temp->next = new_node; //to link the 2 nodes(tail,new_node)
+		new_node->prev=temp; //  to link temp and new_node through prev pointer to maintain the doubly nature of the list
 
 	}
 }
 
 
-// to insert the node at the beginning of thw linked list
+// to insert the node at the beginning of the linked list
 
 void insert_begin(family_node*&head,string name,int age){
 
@@ -66,8 +68,8 @@ void insert_begin(family_node*&head,string name,int age){
 	// inserting a new node at the beginning means to insert it at the head
 	
 	new_node->next=head; // to insert the newnode at the starting, we need to put head at the next pointer of the new_node
-	head->prev=new_node;  // for the doubly nature of the list, new_node is linked to the prev pointer of the head
-	head=new_node;  // to update the head pointer to new_node 
+	head->prev=new_node;  // to maintain the doubly nature of the list, new_node is linked to the prev pointer of the head
+	head=new_node;  // updating the head pointer to new_node 
 
 // now , new_node is the new head of our linked list
 }
@@ -113,7 +115,7 @@ void print_end(family_node*head){
 }
 
 
-// to delete a node at any index (note: we are excluding the deletion of the last element(it will be dealt later on))
+// to delete a node at any index (note: we are excluding the deletion of the last element(it will be dealt with later on))
 
 void delete_i(family_node*head, int i){
 	if(i==0){ // deleting the node at the first index (head of the ll)
@@ -153,7 +155,7 @@ void del_last(family_node*&head){
 
 int32_t main(){
 
-	family_node*head = NULL; // initializing an emoty list
+	family_node*head = NULL; // initializing an empty list
 
 	cout<<"Enter the number of Family members: ";
 	int family_size;
@@ -163,7 +165,7 @@ int32_t main(){
 	for(int i=0;i<family_size;i++){
 		string name;
 		int age;
-
+		
 		cout<<"Enter the name of the "<<i+1<<"th member ";
 		cin>>name;
 		cout<<"Enter the age of the "<<i+1<<"th member ";

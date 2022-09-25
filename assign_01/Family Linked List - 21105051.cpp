@@ -161,7 +161,7 @@ int32_t main(){
 	int family_size;
 	cin>>family_size; // taking the input of the size of the family
 
-	// to take input of the datas of the family members
+	// to take input of the data of the family members
 	for(int i=0;i<family_size;i++){
 		string name;
 		int age;
@@ -172,7 +172,7 @@ int32_t main(){
 		cin>>age;
 
 		// inserting the data in the doubly family linked list
-		insert_member(head,name,age); // inserting from end of the lost
+		insert_member(head,name,age); // inserting from end of the list
 	}
 	cout<<endl;
 

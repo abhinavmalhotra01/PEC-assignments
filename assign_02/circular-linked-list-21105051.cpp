@@ -9,110 +9,36 @@
 /* answer --
 
 
-/** while traversing the list we keep on iterating the list until we reach a node whose next pointer is head and hence, we reach a loop junction in the list 
-// this node will be the last node of the linear list and since it is pointing to head, it is causing the loop in the list
-hence we need to find the node which points to the head of the list i.e. while(temp->next!=head){temp=temp->next;}
-once temp comes out of the loop , it will be at the last element and its next pointer would be pointing to head(first element)
+/** while traversing the list we keep on iterating the list until we reach a node which is pointing to head, we have completed a loop in the list and have reached its' first element
+// this node will be in the next pointer of the last node of the linear list and since, the list is circular in nature it will point to the first element
 
-all in all : We Know that in circular linked list last node of linked list points to head of that linked list,
-hence we can check if any node points to head of linked list then that node is the end of circular linked list
+Hence , while traversing the linked list , as soon as our temp pointer starts pointing to the address of our head node (first element) , we haved reached the first element of the list
 */
 
-/* hence , the condition for it is :
-
-"  while(temp->next!=head){  // this the condition
-temp=temp->next; }  "  // updating temp ptr so that it may reach to the desired node
-
-this condition keeps check that while traversing the list we have reached the first element again
-since, in a circular linked list , the last node of the list points to the head of the linked list , so we check whether any node points to the 
-head or not , the node which does so is the end of our list*/
+/* The condition for it is :
 
 // code :
-#include<bits/stdc++.h>
-using namespace std;
-#define int long long
 
-// creating node class for the list
+node*temp = head -> next;
+while(temp!=head){  // this the condition
+temp=temp->next; }  // updating temp ptr so that it may reach to the desired node
 
-class node{
-	// making the attributres public - so that they can be accessed outside the class also
-public:
-	int data;
-	node*next;
+// when temp comes out of the loop , it would be pointing to the head of the list
 
-	// in order to the objects to be initialised we want , we need to create a constructor--
-	node(int data){ // in order to differentiate the constructor we will take data as input 
-		this->data = data; // the data prop of the current o0bj (this obj) will be set to data
-		this->next=NULL; // the next pointer will inutially point to null ( we will update it during insertion of new nodes)
-	}
-};
+this condition keeps check that while traversing the list we have reached the first element again , since in a circular list, the last element will point to the head
 
-// to insert a new node in the list
-
-void insert(node*&head , int data){
-	node*temp = head; // assigning a temp pointer , which will be useful in iterating over the list
-	node*new_node = new node(data); // creating a new node dynamically
-// for an empty list :
-	if(temp==NULL){
-		head = new_node;
-		new_node->next=head; // to maintain the circular nature of the list
-		return;
-	}
-// for non-empty list:
-	while(temp->next!=head){
-		temp=temp->next;
-	}
-	// now temp has reached  the first element of the list
-	temp->next=new_node; // linking the new_node with the list
-	new_node->next=head; // to maintain circular nature of list
-
-}
-
-// a function to return the last node of the list , which is linked to the head to maintain the circular nature of the list
-
-node* last_node(node*&head){
-	node*temp = head;  // assigning a temp pointer , which will be useful in iterating over the list
-	
-	while(temp->next !=head){
-		temp=temp->next;
-	}
-	// returning the last node
-	return temp; 
-}
-
-// example :
-int32_t main(){
-	node*head = NULL ; // initially creating an wmpty list
-	// inserting some random values in the list
-	int n;
-	cout<<"Enter the number of nodes you want :"<<endl;
-	cin>>n; 
-	int a;
-	for(int i=0;i<n;i++){ // loop for taking the data input of 'n' nodes
-		cout<<"Enter the "<<i+1<<"th node"<<endl;
-		cin>>a;
-		insert(head,a);
-	}
-
-
-	node*t = last_node(head);
-	cout<<t->data<<endl; // printing the data of the node
-	
-	// to print the data of the first element , we can simply print the data of the next of the node t
-	cout<<"data of the first node is : "<<t->next->data<<endl; // we accessed the first node using the last node due to the circular nature of the linked list
-	
-}
 
 
 
 
  /*another way (tougher to implment) can be to create a visited array (as we do in graph theory)
- in this visited array we may map the linked list nodes with respect to index of the array and assign boolean values
- to the array elements , we can keep on iterating on the list unless we encounter a node which has already been marked 
- visited in the array - since we were iteratring the list linearly and encountered a  node, which has been already visited means
- we have reached a point in the list, at which, the circle is formed
- in this approach we will just finally end on the starting node itself and is independent of the state that whether that node is head or not
- // hence the condition :( vis[i]!=false ) finds the element which has been visited already and since, we reached it through linear traversal ,it is the start of the list(the first element from which, we began iterating the list)
+ in this visited array we may map the linked list nodes with respect to index of the array and assign boolean values to the array elements , 
+ we can keep on iterating on the list unless we encounter a node which has already been marked visited in the array - since we were iteratring the list linearly and encountered a node, which has been already visited means
+ we have reached the first node, since after the linear traversal of the list , the last node will point to the head and head has already been visited
+ 
+ // hence the condition 
+ while( vis[i]!=false ){temp=temp->next;vis[i]=true;}
+ finds the element which has been visited already and since, we reached it through linear traversal ,it is the start of the list(the first element from which, we began iterating the list)
  */
 
 

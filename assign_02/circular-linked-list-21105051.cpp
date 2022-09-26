@@ -1,4 +1,3 @@
-// I will be submitting this assignment in c++
 // circular linked list
 
 

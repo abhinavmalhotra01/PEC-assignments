@@ -27,6 +27,84 @@ this condition keeps check that while traversing the list we have reached the fi
 since, in a circular linked list , the last node of the list points to the head of the linked list , so we check whether any node points to the 
 head or not , the node which does so is the end of our list*/
 
+// code :
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+
+// creating node class for the list
+
+class node{
+	// making the attributres public - so that they can be accessed outside the class also
+public:
+	int data;
+	node*next;
+
+	// in order to the objects to be initialised we want , we need to create a constructor--
+	node(int data){ // in order to differentiate the constructor we will take data as input 
+		this->data = data; // the data prop of the current o0bj (this obj) will be set to data
+		this->next=NULL; // the next pointer will inutially point to null ( we will update it during insertion of new nodes)
+	}
+};
+
+// to insert a new node in the list
+
+void insert(node*&head , int data){
+	node*temp = head; // assigning a temp pointer , which will be useful in iterating over the list
+	node*new_node = new node(data); // creating a new node dynamically
+// for an empty list :
+	if(temp==NULL){
+		head = new_node;
+		new_node->next=head; // to maintain the circular nature of the list
+		return;
+	}
+// for non-empty list:
+	while(temp->next!=head){
+		temp=temp->next;
+	}
+	// now temp has reached  the first element of the list
+	temp->next=new_node; // linking the new_node with the list
+	new_node->next=head; // to maintain circular nature of list
+
+}
+
+// a function to return the last node of the list , which is linked to the head to maintain the circular nature of the list
+
+node* last_node(node*&head){
+	node*temp = head;  // assigning a temp pointer , which will be useful in iterating over the list
+	
+	while(temp->next !=head){
+		temp=temp->next;
+	}
+	// returning the last node
+	return temp; 
+}
+
+// example :
+int32_t main(){
+	node*head = NULL ; // initially creating an wmpty list
+	// inserting some random values in the list
+	int n;
+	cout<<"Enter the number of nodes you want :"<<endl;
+	cin>>n; 
+	int a;
+	for(int i=0;i<n;i++){ // loop for taking the data input of 'n' nodes
+		cout<<"Enter the "<<i+1<<"th node"<<endl;
+		cin>>a;
+		insert(head,a);
+	}
+
+
+	node*t = last_node(head);
+	cout<<t->data<<endl; // printing the data of the node
+	
+	// to print the data of the first element , we can simply print the data of the next of the node t
+	cout<<"data of the first node is : "<<t->next->data<<endl; // we accessed the first node using the last node due to the circular nature of the linked list
+	
+}
+
+
+
 
  /*another way (tougher to implment) can be to create a visited array (as we do in graph theory)
  in this visited array we may map the linked list nodes with respect to index of the array and assign boolean values

@@ -1,0 +1,16 @@
+PS C:\Users\abhinav\OneDrive\Desktop\web dev\bootstrap> cd "c:\Users\abhinav\OneDrive\Desktop\3rd sem\dsa\assign_03\" ; if ($?) { g++ size_unknown_21105051.cpp -o size_unknown_21105051 } ; if ($?) { .\size_unknown_21105051 }
+
+Enter the number of elements in the array : 
+5
+Enter the elements of the array : 
+1
+2
+3
+4
+5
+Enter the element you want to search : 
+3
+ Choose the type of search you want to do (linear(L) or binary(B) ) : 
+L
+OK ! We will do linear search on the array 
+ Index of 3 in the given array is : 2

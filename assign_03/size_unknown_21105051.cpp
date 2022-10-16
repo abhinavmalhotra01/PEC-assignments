@@ -111,7 +111,7 @@ int32_t main(){
 	cout<<" Choose the type of search you want to do (linear(L) or binary(B) ) : " <<endl;
 	cin>>decide;
 
-	/* before finding whether the element is present in array or not ( garbage or inf loops will return different values in linear and binary search) */
+	/* Firstly , finding whether the element is present in array or not ( garbage or inf loops will return different values in linear and binary search) */
 	int index_linear = linear_search(arr,z);
 	int index_binary = binary_search(arr,z);
 

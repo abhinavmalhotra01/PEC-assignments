@@ -19,7 +19,7 @@ whereas, Out-place uses extra space to perform the algorithm
 
 /*
 
-Implementation of 	Insertion Sort in both in-pace and out-place manner 
+Implementation of Insertion Sort in both in-pace and out-place manner 
 
 */
 

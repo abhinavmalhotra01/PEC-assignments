@@ -145,7 +145,8 @@ int32_t main(){
 
 	Out-Place technique is better suited for solving problems , where we are not much concerned about 
 	using extra space 
-	for example :used recursion to solve it then a stack of n space would also be used
+	for example :
+				 used recursion to solve it then a stack of n space would also be used
 				 we would have chosen out-place , in this case the implementation of the algorithm is comparatively easier
 				 merge sort is one such algorithm that uses out-place technique and is widely used due to less time complexity however , its' space complexity is O(n) as expected
 		
